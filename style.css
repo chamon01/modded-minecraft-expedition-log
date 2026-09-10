@@ -1,0 +1,163 @@
+﻿/* Base styles */
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    background-color: #0d1117;
+    color: #e6edf3;
+    font-family: Arial, sans-serif;
+    font-size: 16px;
+    line-height: 1.6;
+}
+
+/* Header */
+header {
+    background-color: #1d3522;
+    padding: 2rem 1rem;
+    text-align: center;
+    border-bottom: 4px solid #6ea85b;
+}
+
+header h1 {
+    margin: 0;
+    color: #d8f3c5;
+    font-size: 2.5rem;
+    line-height: 1.2;
+}
+
+/* Navigation */
+nav {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 0.75rem;
+    margin-top: 1.25rem;
+}
+
+nav a {
+    display: inline-block;
+    color: #ffffff;
+    background-color: #315d35;
+    padding: 0.65rem 1rem;
+    border: 1px solid #82b875;
+    border-radius: 6px;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+/* Link interaction */
+nav a:hover {
+    background-color: #b8d991;
+    color: #142016;
+}
+
+nav a:focus-visible {
+    outline: 3px solid #e4c75b;
+    outline-offset: 3px;
+}
+
+/* Main page layout */
+main {
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 2rem 1rem;
+}
+
+/* Content sections */
+section {
+    background-color: #161b22;
+    margin-bottom: 1.5rem;
+    padding: 1.5rem;
+    border: 1px solid #3b4b3f;
+    border-radius: 8px;
+}
+
+h2 {
+    margin-top: 0;
+    color: #9bd67d;
+    font-size: 1.6rem;
+    line-height: 1.2;
+}
+
+p {
+    margin-bottom: 1rem;
+}
+
+/* Lists */
+ul {
+    padding-left: 1.5rem;
+}
+
+li {
+    margin-bottom: 0.5rem;
+}
+
+/* Image */
+img {
+    display: block;
+    max-width: 100%;
+    height: auto;
+    margin: 1.25rem auto;
+    border: 3px solid #587a50;
+    border-radius: 8px;
+}
+
+/* Table */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 1rem;
+    background-color: #10151a;
+}
+
+th,
+td {
+    padding: 0.8rem;
+    border: 1px solid #46534a;
+    text-align: left;
+}
+
+th {
+    background-color: #315d35;
+    color: #ffffff;
+    font-weight: bold;
+}
+
+tbody tr:nth-child(even) {
+    background-color: #18211c;
+}
+
+/* Footer */
+footer {
+    background-color: #1d3522;
+    color: #d8f3c5;
+    text-align: center;
+    padding: 1.25rem;
+    border-top: 3px solid #6ea85b;
+}
+
+/* Smaller screens */
+@media (max-width: 600px) {
+    header h1 {
+        font-size: 2rem;
+    }
+
+    nav {
+        flex-direction: column;
+    }
+
+    nav a {
+        width: 100%;
+        text-align: center;
+    }
+
+    main {
+        padding: 1rem;
+    }
+
+    section {
+        padding: 1rem;
+    }
+}
