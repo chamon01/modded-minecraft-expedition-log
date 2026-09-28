@@ -261,3 +261,46 @@ td {
     }
 }
 
+.expedition-panel {
+    width: 100%;
+}
+
+.status-card {
+    padding: 1rem;
+    border: 1px solid currentColor;
+    margin: 1rem 0;
+}
+
+.status-card.is-alert {
+    outline: 3px solid currentColor;
+    font-weight: bold;
+}
+
+.expedition-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    margin: 1rem 0;
+}
+
+.expedition-actions button,
+#location-select {
+    padding: 0.6rem;
+    font: inherit;
+}
+
+#expedition-log li {
+    margin-bottom: 0.5rem;
+}
+
+@media (max-width: 700px) {
+    .expedition-actions {
+        flex-direction: column;
+    }
+
+    .expedition-actions button,
+    #location-select {
+        width: 100%;
+    }
+}
+

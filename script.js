@@ -83,3 +83,56 @@ currentLocationIndex = 1;
 
 console.log("Current selected location:", locations[currentLocationIndex].name);
 console.log("=== JavaScript finished without errors ===");
+
+
+const statusCard = document.querySelector("#expedition-status");
+const locationSelect = document.querySelector("#location-select");
+const alertButton = document.querySelector("#toggle-alert");
+const addLogButton = document.querySelector("#add-log-entry");
+const expeditionLog = document.querySelector("#expedition-log");
+
+locationSelect.addEventListener("change", function () {
+    const selectedOption =
+        locationSelect.options[locationSelect.selectedIndex];
+
+    const selectedLocation = selectedOption.value;
+    const selectedDanger =
+        selectedOption.getAttribute("data-danger");
+
+    statusCard.textContent =
+        "Current location: " +
+        selectedLocation +
+        " | Danger level: " +
+        selectedDanger;
+
+    statusCard.setAttribute(
+        "data-location",
+        selectedLocation
+    );
+});
+
+alertButton.addEventListener("click", function () {
+    statusCard.classList.toggle("is-alert");
+
+    if (statusCard.classList.contains("is-alert")) {
+        alertButton.textContent = "Remove Danger Highlight";
+    } else {
+        alertButton.textContent = "Toggle Danger Highlight";
+    }
+});
+
+addLogButton.addEventListener("click", function () {
+    const selectedOption =
+        locationSelect.options[locationSelect.selectedIndex];
+
+    const item = document.createElement("li");
+
+    item.textContent =
+        selectedOption.value +
+        " added to the expedition log (danger " +
+        selectedOption.dataset.danger +
+        ").";
+
+    expeditionLog.append(item);
+});
+

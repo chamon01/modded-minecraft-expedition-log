@@ -108,14 +108,43 @@
         I originally expected.
       </p>
     </section>
-  </main>
+   
+    <section id="expedition-controls" class="expedition-panel"> 
+        <h2>Expedition Controls</h2> 
+ 
+        <p id="expedition-status" 
+           class="status-card" 
+           data-location="Overworld Base"> 
+            Current location: Overworld Base | Danger level: 2 
+        </p> 
+ 
+        <label for="location-select">Choose a location:</label> 
+ 
+        <select id="location-select"> 
+            <option value="Overworld Base" data-danger="2">Overworld Base</option> 
+            <option value="Ancient Ruins" data-danger="7">Ancient Ruins</option> 
+            <option value="Mountain Cave" data-danger="9">Mountain Cave</option> 
+        </select> 
+ 
+        <div class="expedition-actions"> 
+            <button id="toggle-alert" type="button"> 
+                Toggle Danger Highlight 
+            </button> 
+ 
+            <button id="add-log-entry" type="button"> 
+                Add Location to Log 
+            </button> 
+        </div> 
+ 
+        <h3>Expedition Log</h3> 
+        <ul id="expedition-log"></ul> 
+    </section> 
+ 
+</main>
 
   <footer>
   <p>Still looking for the right place to call home.</p>
 </footer>
 </body>
 </html>
-
-
-
 
