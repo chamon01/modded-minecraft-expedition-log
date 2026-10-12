@@ -1,4 +1,4 @@
-﻿<!doctype html>
+<!doctype html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
@@ -194,6 +194,38 @@
             <button type="submit">Save Scout Report</button>
 
             <p id="scout-form-message" class="form-message" aria-live="polite"></p>
+        </form>
+    </section>
+
+    <section id="community-reports" class="api-panel">
+        <h2>Community Expedition Reports</h2>
+
+        <p>
+            These reports are loaded from an outside data source.
+        </p>
+
+        <p id="api-load-status" class="api-status" aria-live="polite"></p>
+
+        <div id="api-report-list" class="api-report-list"></div>
+
+        <h3>Send a Test Expedition Report</h3>
+
+        <form id="api-report-form">
+            <div class="form-field">
+                <label for="api-title">Report title</label>
+                <input type="text" id="api-title" name="title">
+            </div>
+
+            <div class="form-field">
+                <label for="api-body">Report notes</label>
+                <textarea id="api-body" name="body" rows="4"></textarea>
+            </div>
+
+            <button type="submit">Send Report</button>
+
+            <p id="api-post-status" class="api-status" aria-live="polite"></p>
+
+            <div id="api-post-result"></div>
         </form>
     </section>
 </main>

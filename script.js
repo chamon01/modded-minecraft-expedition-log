@@ -1,4 +1,4 @@
-﻿"use strict";
+"use strict";
 
 console.log("=== Modded Minecraft Expedition Log ===");
 
@@ -265,3 +265,136 @@ scoutNotes.addEventListener("input", function () {
     scoutFormMessage.textContent = "";
 });
 
+const apiReportList = document.querySelector("#api-report-list");
+const apiLoadStatus = document.querySelector("#api-load-status");
+
+const apiReportForm = document.querySelector("#api-report-form");
+const apiTitle = document.querySelector("#api-title");
+const apiBody = document.querySelector("#api-body");
+const apiPostStatus = document.querySelector("#api-post-status");
+const apiPostResult = document.querySelector("#api-post-result");
+
+function createReportCard(report) {
+    const card = document.createElement("article");
+    card.className = "api-report-card";
+
+    const heading = document.createElement("h3");
+    heading.textContent = report.title;
+
+    const body = document.createElement("p");
+    body.textContent = report.body;
+
+    const reportId = document.createElement("p");
+    reportId.className = "api-report-id";
+    reportId.textContent = "Report ID: " + report.id;
+
+    card.append(heading, body, reportId);
+
+    return card;
+}
+
+function renderReports(reports, container) {
+    container.replaceChildren();
+
+    reports.forEach(function (report) {
+        container.append(createReportCard(report));
+    });
+}
+
+async function loadCommunityReports() {
+    apiLoadStatus.textContent =
+        "Loading community expedition reports...";
+
+    apiReportList.replaceChildren();
+
+    try {
+        const response = await fetch(
+            "https://jsonplaceholder.typicode.com/posts?_limit=5"
+        );
+
+        if (!response.ok) {
+            throw new Error(
+                "GET request failed with status " + response.status
+            );
+        }
+
+        const reports = await response.json();
+
+        renderReports(reports, apiReportList);
+
+        apiLoadStatus.textContent =
+            "Loaded " +
+            reports.length +
+            " community expedition reports.";
+    } catch (error) {
+        apiLoadStatus.textContent =
+            "The expedition reports could not be loaded right now.";
+
+        console.error(error);
+    }
+}
+
+async function sendCommunityReport(report) {
+    apiPostStatus.textContent = "Sending report...";
+    apiPostResult.replaceChildren();
+
+    try {
+        const response = await fetch(
+            "https://jsonplaceholder.typicode.com/posts",
+            {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json"
+                },
+                body: JSON.stringify(report)
+            }
+        );
+
+        if (!response.ok) {
+            throw new Error(
+                "POST request failed with status " + response.status
+            );
+        }
+
+        const createdReport = await response.json();
+
+        renderReports(
+            [createdReport],
+            apiPostResult
+        );
+
+        apiPostStatus.textContent =
+            "Report sent successfully. Returned ID: " +
+            createdReport.id;
+    } catch (error) {
+        apiPostStatus.textContent =
+            "The report could not be sent right now.";
+
+        console.error(error);
+    }
+}
+
+apiReportForm.addEventListener("submit", function (event) {
+    event.preventDefault();
+
+    const title = apiTitle.value.trim();
+    const body = apiBody.value.trim();
+
+    if (title === "" || body === "") {
+        apiPostStatus.textContent =
+            "Enter a report title and report notes before sending.";
+
+        apiPostResult.replaceChildren();
+        return;
+    }
+
+    const report = {
+        title: title,
+        body: body,
+        userId: 1
+    };
+
+    sendCommunityReport(report);
+});
+
+loadCommunityReports();

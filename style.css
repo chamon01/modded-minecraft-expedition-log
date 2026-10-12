@@ -1,4 +1,4 @@
-﻿/* Base styles */
+/* Base styles */
 * {
     box-sizing: border-box;
 }
@@ -356,3 +356,50 @@ td {
     }
 }
 
+.api-panel {
+    width: 100%;
+}
+
+.api-report-list {
+    display: grid;
+    gap: 1rem;
+    margin: 1rem 0 2rem;
+}
+
+.api-report-card {
+    padding: 1rem;
+    border: 1px solid currentColor;
+}
+
+.api-report-card h3 {
+    margin-top: 0;
+}
+
+.api-report-id {
+    font-size: 0.9rem;
+}
+
+.api-status {
+    min-height: 1.2em;
+    font-weight: bold;
+}
+
+#api-report-form {
+    display: grid;
+    gap: 1rem;
+}
+
+#api-report-form button {
+    padding: 0.65rem;
+    font: inherit;
+}
+
+#api-post-result {
+    margin-top: 0.5rem;
+}
+
+@media (max-width: 700px) {
+    #api-report-form button {
+        width: 100%;
+    }
+}
